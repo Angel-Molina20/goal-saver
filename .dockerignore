@@ -1,0 +1,11 @@
+node_modules
+.pnpm-store
+android/.gradle
+android/app/build
+ios/Pods
+ios/build
+.git
+.DS_Store
+npm-debug.log
+yarn-error.log
+pnpm-debug.log

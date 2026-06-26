@@ -1,0 +1,30 @@
+services:
+  react-native:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: goalsaver-rn
+    working_dir: /app/GoalSaverApp
+    volumes:
+      - ./:/app
+      - goalsaver_node_modules:/app/GoalSaverApp/node_modules
+      - goalsaver_pnpm_store:/pnpm/store
+      - goalsaver_gradle:/root/.gradle
+      - goalsaver_android_sdk:/opt/android-sdk
+    ports:
+      - "8081:8081"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
+      - ANDROID_HOME=/opt/android-sdk
+      - ANDROID_SDK_ROOT=/opt/android-sdk
+      - PNPM_HOME=/pnpm
+    stdin_open: true
+    tty: true
+    command: bash
+
+volumes:
+  goalsaver_node_modules:
+  goalsaver_pnpm_store:
+  goalsaver_gradle:
+  goalsaver_android_sdk:
